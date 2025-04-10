@@ -12,22 +12,11 @@ html, body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
-/* Background Image Layer */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('background.jpg') center center / cover no-repeat;
-  z-index: -5;
-  opacity: 0.2;
-  pointer-events: none;
-}
+/* Remove Background Image */
+/* (deleted body::before rule) */
 
 /* Fog Layer */
 .fog-layer {
@@ -62,21 +51,18 @@ body::before {
 /* Main Container */
 .container {
   max-width: 600px;
-  margin: auto;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start;
   padding: 20px;
 }
 
-.container.show-scroll {
-  justify-content: flex-start !important;
-  align-items: stretch;
-  height: auto;
-  min-height: auto;
+/* Make sure body scrolls freely */
+body {
+  overflow-y: auto;
 }
 
 /* Button Styles */
@@ -198,16 +184,3 @@ body.cracked {
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
 
-@media (max-width: 768px) {
-  .container.show-scroll {
-    padding-bottom: 100px;
-  }
-
-  .poem {
-    padding-bottom: 80px;
-  }
-}
-
-body.show-scroll {
-  overflow-y: auto;
-}
