@@ -128,11 +128,11 @@ button.crack {
 
 @keyframes floatDot {
   0% {
-    transform: translate(0, 0) scale(1);
-    opacity: 1;
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0.6;
   }
   100% {
-    transform: translate(var(--x), var(--y)) scale(0.5);
+    transform: translate(var(--x), var(--y)) scale(1.8);
     opacity: 0;
   }
 }
@@ -154,20 +154,18 @@ button.crack {
 
 .past-word .bubble {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #ff6666;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 102, 102, 0.3);
   border-radius: 50%;
-  animation: floatDot 2s ease-out infinite;
-  opacity: 0;
+  animation: floatDot 3s ease-out infinite;
   z-index: 1;
 }
 
-/* Position multiple floating bubbles randomly */
-.past-word .bubble:nth-child(1) { top: -8px; left: 10%; --x: -10px; --y: -50px; animation-delay: 0s; }
-.past-word .bubble:nth-child(2) { top: -8px; left: 30%; --x: 5px; --y: -60px; animation-delay: 0.5s; }
-.past-word .bubble:nth-child(3) { top: -8px; left: 60%; --x: -15px; --y: -55px; animation-delay: 1s; }
-.past-word .bubble:nth-child(4) { top: -8px; left: 80%; --x: 10px; --y: -70px; animation-delay: 1.5s; }
+.past-word .bubble:nth-child(1) { top: -8px; left: 10%; --x: -10px; --y: -60px; animation-delay: 0s; }
+.past-word .bubble:nth-child(2) { top: -8px; left: 30%; --x: 15px; --y: -80px; animation-delay: 0.5s; }
+.past-word .bubble:nth-child(3) { top: -8px; left: 60%; --x: -20px; --y: -70px; animation-delay: 1s; }
+.past-word .bubble:nth-child(4) { top: -8px; left: 80%; --x: 10px; --y: -90px; animation-delay: 1.5s; }
 
 .past-word strong:hover {
   transform: scale(1.05);
