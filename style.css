@@ -1,71 +1,23 @@
-/* Layout & Typography */
-html, body {
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  font-family: 'Georgia', serif;
   background-color: #0f0f0f;
+  font-family: 'Georgia', serif;
   color: #fff;
   text-align: center;
+  padding: 20px;
   overflow-x: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
-/* Remove Background Image */
-/* (deleted body::before rule) */
-
-/* Fog Layer */
-.fog-layer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: -4;
-  pointer-events: none;
-}
-
-.fog {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 80%);
-  filter: blur(50px);
-  animation: fogMove 60s linear infinite;
-}
-
-.fog1 { top: 20%; left: -10%; animation-delay: 0s; }
-.fog2 { top: 50%; left: 10%; animation-delay: 15s; }
-.fog3 { top: 70%; left: 40%; animation-delay: 30s; }
-
-@keyframes fogMove {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100vw); }
-}
-
-/* Main Container */
 .container {
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 20px;
 }
 
-/* Make sure body scrolls freely */
-body {
-  overflow-y: auto;
+h1, p, button {
+  margin: 12px 0;
 }
 
-/* Button Styles */
 button {
   padding: 12px 24px;
   background-color: #3e2d24;
@@ -75,7 +27,6 @@ button {
   cursor: pointer;
   border-radius: 8px;
   transition: 0.3s ease;
-  margin: 12px 0;
 }
 
 button:hover {
@@ -88,7 +39,6 @@ button.crack {
   background-color: #8b2c2c;
 }
 
-/* Text Effects */
 .fade-in {
   animation: fadeIn 1.2s ease-in-out forwards;
   opacity: 0;
@@ -121,7 +71,6 @@ button.crack {
   100% { transform: translateY(0) rotate(0deg); }
 }
 
-/* Message */
 .message p {
   font-size: 1.25em;
   margin-top: 20px;
@@ -135,7 +84,6 @@ button.crack {
   margin-top: 40px;
 }
 
-/* Poem Section */
 .poem {
   margin-top: 40px;
   animation: fadeText 1s ease-in forwards;
@@ -152,7 +100,7 @@ button.crack {
   font-size: 1.1em;
 }
 
-/* Final Interactive Quote */
+/* Interactive ending quote */
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
