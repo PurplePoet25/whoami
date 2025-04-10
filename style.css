@@ -115,15 +115,24 @@ button.crack {
   to { opacity: 1; }
 }
 
+/* Pulse animation for interactive past */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
   cursor: pointer;
   transition: transform 0.3s ease;
+  animation: pulse 2s infinite;
 }
 
 .past-word strong:hover {
   transform: scale(1.05);
+  text-shadow: 0 0 8px #ff6666;
 }
 
 body.cracked {
@@ -135,4 +144,3 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
-
