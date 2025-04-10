@@ -1,184 +1,79 @@
-body {
-  margin: 0;
-  background-color: #0f0f0f;
-  font-family: 'Georgia', serif;
-  color: #fff;
-  text-align: center;
-  padding: 0 20px;
-  overflow-x: hidden;
+const labels = [
+  "Middle Eastern", "Arab", "American", "Other", "Foreign",
+  "Pakistani", "Confused", "Outsider", "South Asian", "Brown",
+  "Student", "Undefined", "Non-resident alien", "International student"
+];
+
+function startAnimation() {
+  const button = document.getElementById('startButton');
+  button.classList.add('crack');
+  button.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('intro').classList.add('hidden');
+    const roller = document.getElementById('roller');
+    const slot = document.getElementById('slot');
+    const results = document.getElementById('results');
+    roller.classList.remove('hidden');
+
+    let i = 0;
+
+    function showWord(count) {
+      const label = labels[Math.floor(Math.random() * labels.length)];
+      slot.textContent = label;
+
+      const wordEl = document.createElement('div');
+      wordEl.textContent = label;
+      wordEl.className = `picked word${count}`;
+      results.appendChild(wordEl);
+    }
+
+    const interval = setInterval(() => {
+      i++;
+      if (i === 15) showWord(1);
+      if (i === 30) showWord(2);
+      if (i === 45) {
+        showWord(3);
+        clearInterval(interval);
+        setTimeout(() => {
+          roller.classList.add('hidden');
+          document.getElementById('message').classList.remove('hidden');
+        }, 2000);
+      } else {
+        slot.textContent = labels[Math.floor(Math.random() * labels.length)];
+      }
+    }, 100);
+  }, 500);
 }
 
-.container {
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 20vh;
+function revealPoem() {
+  const poem = document.getElementById('poem');
+  const container = document.getElementById('mainContainer');
+
+  poem.classList.remove('hidden');
+  container.classList.add('show-scroll');
+  document.body.classList.add('show-scroll');
+
+  poem.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-.container.show-scroll {
-  padding-top: 40px;
-}
+function restartExperience() {
+  document.body.classList.add("cracked");
 
-h1, p, button {
-  margin: 12px 0;
-}
+  setTimeout(() => {
+    document.getElementById("intro").classList.remove("hidden");
+    document.getElementById("roller").classList.add("hidden");
+    document.getElementById("message").classList.add("hidden");
+    document.getElementById("poem").classList.add("hidden");
+    document.getElementById("mainContainer").classList.remove("show-scroll");
+    document.body.classList.remove("show-scroll");
 
-button {
-  padding: 12px 24px;
-  background-color: #3e2d24;
-  color: white;
-  border: none;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s ease;
-}
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("slot").textContent = "Loading...";
+    document.getElementById("startButton").disabled = false;
 
-button:hover {
-  background-color: #5a4134;
-}
-
-button.crack {
-  transform: scale(0.98) rotate(-2deg);
-  box-shadow: 0 0 10px red;
-  background-color: #8b2c2c;
-}
-
-.fade-in {
-  animation: fadeIn 1.2s ease-in-out forwards;
-  opacity: 0;
-}
-
-.hidden {
-  display: none;
-}
-
-.slot {
-  font-size: 1.8em;
-  margin-bottom: 2.5em;
-}
-
-.results div {
-  font-size: 1.5em;
-  opacity: 1;
-  animation: crashDrop 0.8s ease-in-out forwards;
-  position: relative;
-  display: inline-block;
-}
-
-.word1 { animation-delay: 0.4s; transform: rotate(-2deg); }
-.word2 { animation-delay: 0.8s; transform: rotate(2deg); }
-.word3 { animation-delay: 1.2s; transform: rotate(-1deg); }
-
-@keyframes crashDrop {
-  0% { transform: translateY(-100px) scale(1.2) rotate(0deg); opacity: 0; }
-  70% { transform: translateY(20px) scale(1) rotate(10deg); opacity: 1; }
-  100% { transform: translateY(0) rotate(0deg); }
-}
-
-.message p {
-  font-size: 1.25em;
-  margin-top: 20px;
-  opacity: 0;
-  animation: fadeText 1s ease-in forwards;
-}
-
-.message .signoff {
-  font-size: 1em;
-  color: #aaa;
-  margin-top: 40px;
-}
-
-.poem {
-  margin-top: 150px;
-  padding-top: 40px;
-  animation: fadeText 1s ease-in forwards;
-  text-align: left;
-}
-
-.poem h2 {
-  font-size: 1.4em;
-  margin-bottom: 20px;
-}
-
-.poem p {
-  margin: 8px 0;
-  font-size: 1.1em;
-}
-
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeText {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    text-shadow: 0 0 5px #ff6666;
-  }
-  50% {
-    transform: scale(1.2);
-    text-shadow: 0 0 15px #ff6666;
-  }
-}
-
-@keyframes floatDot {
-  0% {
-    transform: translate(0, 0) scale(0.5);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(var(--x), var(--y)) scale(1.8);
-    opacity: 0;
-  }
-}
-
-.past-word {
-  position: relative;
-  display: inline-block;
-}
-
-.past-word strong {
-  color: #ff6666;
-  font-size: 1.2em;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  animation: pulse 1.5s infinite;
-  position: relative;
-  z-index: 2;
-}
-
-.past-word .bubble {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 102, 102, 0.3);
-  border-radius: 50%;
-  animation: floatDot 3s ease-out infinite;
-  z-index: 1;
-}
-
-.past-word .bubble:nth-child(1) { top: -8px; left: 10%; --x: -10px; --y: -60px; animation-delay: 0s; }
-.past-word .bubble:nth-child(2) { top: -8px; left: 30%; --x: 15px; --y: -80px; animation-delay: 0.5s; }
-.past-word .bubble:nth-child(3) { top: -8px; left: 60%; --x: -20px; --y: -70px; animation-delay: 1s; }
-.past-word .bubble:nth-child(4) { top: -8px; left: 80%; --x: 10px; --y: -90px; animation-delay: 1.5s; }
-
-.past-word strong:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 8px #ff6666;
-}
-
-body.cracked {
-  animation: crumble 1s ease forwards;
-}
-
-@keyframes crumble {
-  0% { opacity: 1; transform: scale(1) rotate(0); }
-  50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
-  100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.body.classList.remove("cracked");
+  }, 1000);
 }
 
