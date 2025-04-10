@@ -7,20 +7,76 @@
 </head>
 <body>
   <div class="container">
-    <div class="intro" id="intro">
+    <div class="intro fade-in" id="intro">
       <h1>Who am I?</h1>
       <p>Let’s see what the world thinks...</p>
-      <button onclick="startAnimation()">Continue</button>
+      <button id="startButton" onclick="startAnimation()">Continue</button>
     </div>
+
     <div class="roller hidden" id="roller">
       <div class="slot" id="slot">Loading...</div>
+      <div class="results" id="results"></div>
     </div>
+
     <div class="message hidden" id="message">
       <p>Now imagine living with that label...</p>
       <p>...and still being asked to explain it.</p>
       <p class="signoff">— Hasan Bukhari, Southern Miss 2025</p>
+      <button id="revealPoemBtn" onclick="revealPoem()">Read the Poem</button>
+    </div>
+
+    <div class="poem hidden" id="poem">
+      <h2>“Middle Eastern”</h2>
+
+      <p>I like chai with my conversations,<br>
+      not chai tea, only chai;<br>
+      its strong and intoxicating fumes,<br>
+      the lapping waves of...<br>
+      <em>home</em>—<br>
+      and there you are again: nostalgia</p>
+
+      <p>My mother would take a sip of chai,<br>
+      and follow with it, that familiar groan,<br>
+      never perfect—Dee's chai—yet my favorite,<br>
+      and then we would sit on that impossibly small balcony,<br>
+      ponder, sonder, and weave ebullient conversation</p>
+
+      <p>Mum would curse the crows that crowded the tamarind trees,<br>
+      the trees we'd hurl stones at after school for a snack,<br>
+      and as time went on, they'd hang up more targets for us,<br>
+      their precious veiny hands and the shadows they'd cast upon us,<br>
+      yes, the trees were also an adult to my childlike eyes</p>
+
+      <p>My people, from the East to the West and farther,<br>
+      people of Deodars, Dates, Sycamores, Argans and Olives,<br>
+      were born in the sap, to seep through the bark,<br>
+      the mystery of exploitation and generous, generous land,<br>
+      I call my home only where free, my people may stand,</p>
+
+      <p><em>so...</em><br>
+              I don't mind your questions—no, they aren't ridiculous,<br>
+      To grow is to learn—from people within and beside you,<br>
+      And yes for the hundredth time today,<br>
+      I say I'm not Middle Eastern—but we're as one every other way,<br>
+      because my people are your people and your people are mine too</p>
+
+      <p>The silence of a<br>
+                                   tip <br>
+                                        tip <br>
+                                             tip<br>
+      and then falls a drop on my cheek,<br>
+      I'm back home with chai under a dry tamarind tree,<br>
+      and then I ask my sister how long I've been here,<br>
+      "I don't recall you leaving," she sets down a pack of cookies,<br>
+      and when I dunk one in my chai,<br>
+      it breaks off and so—I groan again :)</p>
+
+      <hr style="margin: 2em 0; border: none; border-top: 1px solid #444;">
+
+      <p><em>The past is a foreign country.</em></p>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
