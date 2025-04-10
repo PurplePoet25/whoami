@@ -73,9 +73,10 @@ body::before {
 }
 
 .container.show-scroll {
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-top: 60px;
+  justify-content: flex-start !important;
+  align-items: stretch;
+  height: auto;
+  min-height: auto;
 }
 
 /* Button Styles */
@@ -195,4 +196,18 @@ body.cracked {
   0% { opacity: 1; transform: scale(1) rotate(0); }
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
+}
+
+@media (max-width: 768px) {
+  .container.show-scroll {
+    padding-bottom: 100px;
+  }
+
+  .poem {
+    padding-bottom: 80px;
+  }
+}
+
+body.show-scroll {
+  overflow-y: auto;
 }
