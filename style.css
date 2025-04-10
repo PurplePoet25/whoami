@@ -121,7 +121,7 @@ button.crack {
     text-shadow: 0 0 5px #ff6666;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.15);
     text-shadow: 0 0 15px #ff6666;
   }
 }
@@ -137,39 +137,62 @@ button.crack {
   }
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .past-word {
   position: relative;
   display: inline-block;
+  animation: pulse 4s infinite ease-in-out;
 }
 
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  animation: pulse 1.5s infinite;
   position: relative;
   z-index: 2;
 }
 
-.past-word::after {
+.past-word::before {
   content: '';
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #ff6666;
-  border-radius: 50%;
-  top: -10px;
+  width: 80%;
+  height: 80%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  animation: floatDot 1.5s infinite ease-in-out;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 102, 102, 0.3);
+  animation: ripple 3s ease-out infinite;
+  z-index: 0;
+}
+
+.past-word .bubble {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 102, 102, 0.3);
+  border-radius: 50%;
+  animation: floatDot 3s ease-out infinite;
   z-index: 1;
 }
 
-.past-word strong:hover {
-  transform: scale(1.05);
-  text-shadow: 0 0 8px #ff6666;
-}
+.past-word .bubble:nth-child(1) { top: -8px; left: 10%; animation-delay: 0s; }
+.past-word .bubble:nth-child(2) { top: -8px; left: 30%; animation-delay: 0.5s; }
+.past-word .bubble:nth-child(3) { top: -8px; left: 60%; animation-delay: 1s; }
+.past-word .bubble:nth-child(4) { top: -8px; left: 80%; animation-delay: 1.5s; }
 
 body.cracked {
   animation: crumble 1s ease forwards;
@@ -179,19 +202,4 @@ body.cracked {
   0% { opacity: 1; transform: scale(1) rotate(0); }
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
-}
-
-.past-word .hint {
-  display: block;
-  font-size: 0.6em;
-  opacity: 0.3;
-  margin-top: 2px;
-  letter-spacing: 0.5px;
-  font-style: italic;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.past-word strong:hover .hint {
-  opacity: 0.5;
 }
