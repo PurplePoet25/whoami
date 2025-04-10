@@ -6,28 +6,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
   padding: 20px;
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   width: 100%;
 }
 
-.intro h1 {
-  font-size: 2em;
-  margin-bottom: 0.5em;
-}
-
-.intro p {
-  font-size: 1.2em;
-  opacity: 0.85;
+h1, p, button {
+  margin: 12px 0;
 }
 
 button {
-  margin-top: 30px;
   padding: 12px 24px;
   background-color: #3e2d24;
   color: white;
@@ -35,11 +28,22 @@ button {
   font-size: 1em;
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
 }
 
 button:hover {
   background-color: #5a4134;
+}
+
+button.crack {
+  transform: scale(0.98) rotate(-2deg);
+  box-shadow: 0 0 10px red;
+  background-color: #8b2c2c;
+}
+
+.fade-in {
+  animation: fadeIn 1.2s ease-in-out forwards;
+  opacity: 0;
 }
 
 .hidden {
@@ -48,8 +52,18 @@ button:hover {
 
 .slot {
   font-size: 1.8em;
-  animation: fadeIn 0.5s ease-in-out;
+  margin-bottom: 1em;
 }
+
+.results div {
+  font-size: 1.5em;
+  opacity: 0;
+  animation: dropIn 0.7s ease-out forwards;
+}
+
+.word1 { animation-delay: 0.5s; transform: rotate(-2deg); }
+.word2 { animation-delay: 1.2s; transform: rotate(2deg); }
+.word3 { animation-delay: 1.9s; transform: rotate(-1deg); }
 
 .message p {
   font-size: 1.25em;
@@ -64,12 +78,31 @@ button:hover {
   margin-top: 40px;
 }
 
+.poem {
+  margin-top: 40px;
+  animation: fadeText 1s ease-in forwards;
+}
+
+.poem h2 {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+}
+
+.poem p {
+  margin: 8px 0;
+  font-size: 1.1em;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 @keyframes fadeText {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0.2; }
-  to { opacity: 1; }
+@keyframes dropIn {
+  0% { transform: translateY(-40px) scale(0.8); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
