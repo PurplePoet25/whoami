@@ -1,15 +1,21 @@
-body {
+/* Layout & Typography */
+html, body {
   margin: 0;
-  background-color: #0f0f0f;
+  padding: 0;
+  height: 100%;
+  width: 100%;
   font-family: 'Georgia', serif;
+  background-color: #0f0f0f;
   color: #fff;
   text-align: center;
-  padding: 20px;
   overflow-x: hidden;
   position: relative;
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
+/* Background Image Layer */
 body::before {
   content: "";
   position: fixed;
@@ -23,6 +29,7 @@ body::before {
   pointer-events: none;
 }
 
+/* Fog Layer */
 .fog-layer {
   position: fixed;
   top: 0;
@@ -66,13 +73,20 @@ body::before {
   100% { transform: translateX(-100vw); }
 }
 
+/* Main Container */
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
+/* Button Styles */
 button {
   padding: 12px 24px;
   background-color: #3e2d24;
@@ -95,6 +109,7 @@ button.crack {
   background-color: #8b2c2c;
 }
 
+/* Text Effects */
 .fade-in {
   animation: fadeIn 1.2s ease-in-out forwards;
   opacity: 0;
@@ -109,6 +124,7 @@ button.crack {
   margin-bottom: 2.5em;
 }
 
+/* Slot Word Drops */
 .results div {
   font-size: 1.5em;
   opacity: 1;
@@ -127,6 +143,7 @@ button.crack {
   100% { transform: translateY(0) rotate(0deg); }
 }
 
+/* Message */
 .message p {
   font-size: 1.25em;
   margin-top: 20px;
@@ -140,6 +157,7 @@ button.crack {
   margin-top: 40px;
 }
 
+/* Poem Section */
 .poem {
   margin-top: 40px;
   animation: fadeText 1s ease-in forwards;
@@ -156,30 +174,7 @@ button.crack {
   font-size: 1.1em;
 }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeText {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-html, body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding-top: 60px;
-}
-
+/* Final Interactive Quote */
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
@@ -191,6 +186,16 @@ html, body {
   transform: scale(1.05);
 }
 
+/* Animations */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 body.cracked {
   animation: crumble 1s ease forwards;
 }
@@ -200,3 +205,4 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
+
