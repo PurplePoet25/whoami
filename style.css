@@ -60,8 +60,8 @@ button.crack {
 
 .results div {
   font-size: 1.5em;
-  opacity: 0;
-  animation: typeFade 0.9s ease-out forwards;
+  opacity: 1;
+  animation: crashDrop 0.8s ease-in-out forwards;
   position: relative;
   display: inline-block;
 }
@@ -70,15 +70,10 @@ button.crack {
 .word2 { animation-delay: 0.8s; transform: rotate(2deg); }
 .word3 { animation-delay: 1.2s; transform: rotate(-1deg); }
 
-@keyframes typeFade {
-  from {
-    opacity: 0;
-    transform: scale(1.15) translateY(15px) blur(2px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0) blur(0);
-  }
+@keyframes crashDrop {
+  0% { transform: translateY(-100px) scale(1.2) rotate(0deg); opacity: 0; }
+  70% { transform: translateY(20px) scale(1) rotate(10deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); }
 }
 
 .message p {
@@ -126,7 +121,7 @@ button.crack {
     text-shadow: 0 0 5px #ff6666;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.15);
     text-shadow: 0 0 15px #ff6666;
   }
 }
@@ -142,19 +137,46 @@ button.crack {
   }
 }
 
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  70% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .past-word {
   position: relative;
   display: inline-block;
+  animation: pulse 4s infinite ease-in-out;
 }
 
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  animation: pulse 1.5s infinite;
   position: relative;
   z-index: 2;
+}
+
+.past-word::before {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 102, 102, 0.3);
+  animation: ripple 3s ease-out infinite;
+  z-index: 0;
 }
 
 .past-word .bubble {
@@ -167,32 +189,19 @@ button.crack {
   z-index: 1;
 }
 
-.past-word .bubble:nth-child(1) { top: -8px; left: 10%; }
+.past-word .bubble:nth-child(1) { top: -8px; left: 10%; animation-delay: 0s; }
 .past-word .bubble:nth-child(2) { top: -8px; left: 30%; animation-delay: 0.5s; }
 .past-word .bubble:nth-child(3) { top: -8px; left: 60%; animation-delay: 1s; }
 .past-word .bubble:nth-child(4) { top: -8px; left: 80%; animation-delay: 1.5s; }
 
 body.cracked {
-  animation: crumble 0.8s ease forwards;
+  animation: crumble 1s ease forwards;
 }
 
 @keyframes crumble {
   0% { opacity: 1; transform: scale(1) rotate(0); }
-  50% { opacity: 0.5; transform: scale(0.95) rotate(2deg); }
+  50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
-}
-
-#fadeOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  z-index: 999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
 }
 
 body.cracked #fadeOverlay {
