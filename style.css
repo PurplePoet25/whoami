@@ -1,26 +1,11 @@
-/* === STYLE.CSS FINAL === */
-
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
   background-color: #0f0f0f;
   font-family: 'Georgia', serif;
   color: #fff;
   text-align: center;
   overflow-x: hidden;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-body.show-scroll {
-  align-items: flex-start;
-  justify-content: flex-start;
-  height: auto;
-  overflow-y: auto;
 }
 
 .container {
@@ -28,7 +13,16 @@ body.show-scroll {
   width: 100%;
   margin: 0 auto;
   padding: 20px;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* When poem is visible, remove vertical centering */
+.container.show-scroll {
+  justify-content: flex-start;
+  padding-top: 40px;
 }
 
 h1, p, button {
@@ -147,3 +141,4 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
+
