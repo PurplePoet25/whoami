@@ -16,10 +16,18 @@ function startAnimation() {
     const results = document.getElementById('results');
     roller.classList.remove('hidden');
 
+    let usedLabels = new Set();
     let i = 0;
 
+    function getUniqueLabel() {
+      const available = labels.filter(label => !usedLabels.has(label));
+      const picked = available[Math.floor(Math.random() * available.length)];
+      usedLabels.add(picked);
+      return picked;
+    }
+
     function showWord(count) {
-      const label = labels[Math.floor(Math.random() * labels.length)];
+      const label = getUniqueLabel();
       slot.textContent = label;
 
       const wordEl = document.createElement('div');
@@ -76,4 +84,3 @@ function restartExperience() {
     document.body.classList.remove("cracked");
   }, 1000);
 }
-
