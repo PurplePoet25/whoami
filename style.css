@@ -50,23 +50,9 @@ body::before {
   animation: fogMove 60s linear infinite;
 }
 
-.fog1 {
-  top: 20%;
-  left: -10%;
-  animation-delay: 0s;
-}
-
-.fog2 {
-  top: 50%;
-  left: 10%;
-  animation-delay: 15s;
-}
-
-.fog3 {
-  top: 70%;
-  left: 40%;
-  animation-delay: 30s;
-}
+.fog1 { top: 20%; left: -10%; animation-delay: 0s; }
+.fog2 { top: 50%; left: 10%; animation-delay: 15s; }
+.fog3 { top: 70%; left: 40%; animation-delay: 30s; }
 
 @keyframes fogMove {
   0% { transform: translateX(0); }
@@ -84,6 +70,12 @@ body::before {
   justify-content: center;
   min-height: 100vh;
   padding: 20px;
+}
+
+.container.show-scroll {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 60px;
 }
 
 /* Button Styles */
@@ -124,7 +116,6 @@ button.crack {
   margin-bottom: 2.5em;
 }
 
-/* Slot Word Drops */
 .results div {
   font-size: 1.5em;
   opacity: 1;
@@ -205,4 +196,3 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
-
