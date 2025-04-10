@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,13 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="intro-wrapper" id="introWrapper">
-      <div class="intro fade-in" id="intro">
-        <h1>Who am I?</h1>
-        <p>Let’s see what the world thinks...</p>
-        <button id="startButton" onclick="startAnimation()">Continue</button>
-      </div>
+  <div class="fog-layer">
+    <div class="fog fog1"></div>
+    <div class="fog fog2"></div>
+    <div class="fog fog3"></div>
+  </div>
+
+  <div class="container" id="mainContainer">
+    <div class="intro fade-in" id="intro">
+      <h1>Who am I?</h1>
+      <p>Let’s see what the world thinks...</p>
+      <button id="startButton" onclick="startAnimation()">Continue</button>
     </div>
 
     <div class="roller hidden" id="roller">
