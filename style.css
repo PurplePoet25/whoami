@@ -1,23 +1,28 @@
-body {
+html, body {
   margin: 0;
+  padding: 0;
   background-color: #0f0f0f;
   font-family: 'Georgia', serif;
   color: #fff;
   text-align: center;
-  padding: 20px;
   overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .container {
   max-width: 600px;
-  width: 100%;
   margin: 0 auto;
+  padding: 20px;
 }
 
-h1, p, button {
-  margin: 12px 0;
+.intro-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
+/* Buttons */
 button {
   padding: 12px 24px;
   background-color: #3e2d24;
@@ -27,6 +32,7 @@ button {
   cursor: pointer;
   border-radius: 8px;
   transition: 0.3s ease;
+  margin: 12px 0;
 }
 
 button:hover {
@@ -39,6 +45,7 @@ button.crack {
   background-color: #8b2c2c;
 }
 
+/* Utility */
 .fade-in {
   animation: fadeIn 1.2s ease-in-out forwards;
   opacity: 0;
@@ -48,6 +55,17 @@ button.crack {
   display: none;
 }
 
+/* Animation */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slot machine */
 .slot {
   font-size: 1.8em;
   margin-bottom: 2.5em;
@@ -71,6 +89,7 @@ button.crack {
   100% { transform: translateY(0) rotate(0deg); }
 }
 
+/* Poem & Message */
 .message p {
   font-size: 1.25em;
   margin-top: 20px;
@@ -100,7 +119,7 @@ button.crack {
   font-size: 1.1em;
 }
 
-/* Interactive ending quote */
+/* Interactive Quote */
 .past-word strong {
   color: #ff6666;
   font-size: 1.2em;
@@ -112,16 +131,6 @@ button.crack {
   transform: scale(1.05);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
-
-@keyframes fadeText {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 body.cracked {
   animation: crumble 1s ease forwards;
 }
@@ -131,4 +140,3 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
-
