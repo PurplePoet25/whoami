@@ -180,3 +180,12 @@ body.cracked {
   50% { opacity: 0.5; transform: scale(0.9) rotate(2deg); }
   100% { opacity: 0; transform: scale(0.7) rotate(-5deg); }
 }
+
+.tap-hint {
+  font-size: 0.85em;
+  color: #aaa;
+  opacity: 0.6;
+  font-style: italic;
+  margin-bottom: 1em;
+  text-align: center;
+}
