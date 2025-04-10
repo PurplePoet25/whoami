@@ -4,10 +4,6 @@ const labels = [
   "Student", "Undefined", "Non-resident alien", "International student"
 ];
 
-// Load audio
-const crackSound = new Audio('crack.mp3');
-const labelSound = new Audio('label.mp3');
-
 function startAnimation() {
   const button = document.getElementById('startButton');
   button.classList.add('crack');
@@ -33,7 +29,6 @@ function startAnimation() {
     function showWord(count) {
       const label = getUniqueLabel();
       slot.textContent = label;
-      labelSound.play();
 
       const wordEl = document.createElement('div');
       wordEl.textContent = label;
@@ -71,9 +66,7 @@ function revealPoem() {
 }
 
 function restartExperience() {
-  crackSound.play();
   document.body.classList.add("cracked");
-  document.getElementById("fadeOverlay").classList.remove("hidden");
 
   setTimeout(() => {
     document.getElementById("intro").classList.remove("hidden");
@@ -87,9 +80,7 @@ function restartExperience() {
     document.getElementById("slot").textContent = "Loading...";
     document.getElementById("startButton").disabled = false;
 
-    document.getElementById("fadeOverlay").classList.add("hidden");
-    document.body.classList.remove("cracked");
-
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, 1800);
+    document.body.classList.remove("cracked");
+  }, 1000);
 }
