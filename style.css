@@ -1,10 +1,10 @@
 body {
   margin: 0;
-  padding: 0;
   background-color: #0f0f0f;
   font-family: 'Georgia', serif;
   color: #fff;
   text-align: center;
+  padding: 0 20px;
   overflow-x: hidden;
 }
 
@@ -12,17 +12,11 @@ body {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-top: 20vh; /* gives that centered look */
 }
 
-/* When poem is visible, remove vertical centering */
 .container.show-scroll {
-  justify-content: flex-start;
-  padding-top: 40px;
+  padding-top: 40px; /* remove extra top padding when poem shows */
 }
 
 h1, p, button {
