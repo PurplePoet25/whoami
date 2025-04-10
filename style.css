@@ -52,18 +52,26 @@ button.crack {
 
 .slot {
   font-size: 1.8em;
-  margin-bottom: 1em;
+  margin-bottom: 2.5em;
 }
 
 .results div {
   font-size: 1.5em;
-  opacity: 0;
-  animation: dropIn 0.7s ease-out forwards;
+  opacity: 1;
+  animation: crashDrop 0.8s ease-in-out forwards;
+  position: relative;
+  display: inline-block;
 }
 
-.word1 { animation-delay: 0.5s; transform: rotate(-2deg); }
-.word2 { animation-delay: 1.2s; transform: rotate(2deg); }
-.word3 { animation-delay: 1.9s; transform: rotate(-1deg); }
+.word1 { animation-delay: 0.4s; transform: rotate(-2deg); }
+.word2 { animation-delay: 0.8s; transform: rotate(2deg); }
+.word3 { animation-delay: 1.2s; transform: rotate(-1deg); }
+
+@keyframes crashDrop {
+  0% { transform: translateY(-100px) scale(1.2) rotate(0deg); opacity: 0; }
+  70% { transform: translateY(20px) scale(1) rotate(10deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); }
+}
 
 .message p {
   font-size: 1.25em;
@@ -81,6 +89,7 @@ button.crack {
 .poem {
   margin-top: 40px;
   animation: fadeText 1s ease-in forwards;
+  text-align: left;
 }
 
 .poem h2 {
@@ -100,9 +109,4 @@ button.crack {
 @keyframes fadeText {
   from { opacity: 0; }
   to { opacity: 1; }
-}
-
-@keyframes dropIn {
-  0% { transform: translateY(-40px) scale(0.8); opacity: 0; }
-  100% { transform: translateY(0) scale(1); opacity: 1; }
 }
