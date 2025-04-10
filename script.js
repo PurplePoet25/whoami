@@ -54,9 +54,8 @@ function revealPoem() {
   container.classList.add('show-scroll');
   document.body.classList.add('show-scroll');
 
-  poem.scrollIntoView({ behavior: "smooth" });
+  poem.scrollIntoView({ behavior: "smooth", block: "start" });
 }
-
 
 function restartExperience() {
   document.body.classList.add("cracked");
@@ -67,6 +66,7 @@ function restartExperience() {
     document.getElementById("message").classList.add("hidden");
     document.getElementById("poem").classList.add("hidden");
     document.getElementById("mainContainer").classList.remove("show-scroll");
+    document.body.classList.remove("show-scroll");
 
     document.getElementById("results").innerHTML = "";
     document.getElementById("slot").textContent = "Loading...";
@@ -76,3 +76,4 @@ function restartExperience() {
     document.body.classList.remove("cracked");
   }, 1000);
 }
+
