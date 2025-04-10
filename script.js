@@ -52,9 +52,11 @@ function revealPoem() {
 
   poem.classList.remove('hidden');
   container.classList.add('show-scroll');
+  document.body.classList.add('show-scroll');
 
   poem.scrollIntoView({ behavior: "smooth" });
 }
+
 
 function restartExperience() {
   document.body.classList.add("cracked");
