@@ -12,11 +12,11 @@ body {
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
-  padding-top: 20vh; /* gives that centered look */
+  padding-top: 20vh;
 }
 
 .container.show-scroll {
-  padding-top: 40px; /* remove extra top padding when poem shows */
+  padding-top: 40px;
 }
 
 h1, p, button {
@@ -115,11 +115,31 @@ button.crack {
   to { opacity: 1; }
 }
 
-/* Pulse animation for interactive past */
 @keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.05); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
+  0%, 100% {
+    transform: scale(1);
+    text-shadow: 0 0 5px #ff6666;
+  }
+  50% {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px #ff6666;
+  }
+}
+
+@keyframes floatDot {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-10px, -20px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.past-word {
+  position: relative;
+  display: inline-block;
 }
 
 .past-word strong {
@@ -127,7 +147,23 @@ button.crack {
   font-size: 1.2em;
   cursor: pointer;
   transition: transform 0.3s ease;
-  animation: pulse 2s infinite;
+  animation: pulse 1.5s infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.past-word::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ff6666;
+  border-radius: 50%;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: floatDot 1.5s infinite ease-in-out;
+  z-index: 1;
 }
 
 .past-word strong:hover {
