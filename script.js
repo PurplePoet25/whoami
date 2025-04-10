@@ -50,3 +50,20 @@ function revealPoem() {
   poem.classList.remove('hidden');
   poem.scrollIntoView({ behavior: "smooth" });
 }
+
+function restartExperience() {
+  document.body.classList.add("cracked");
+  setTimeout(() => {
+    // Reset state
+    document.getElementById("intro").classList.remove("hidden");
+    document.getElementById("roller").classList.add("hidden");
+    document.getElementById("message").classList.add("hidden");
+    document.getElementById("poem").classList.add("hidden");
+
+    document.getElementById("results").innerHTML = "";
+    document.getElementById("slot").textContent = "Loading...";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    document.body.classList.remove("cracked");
+  }, 1000);
+}
