@@ -7,6 +7,7 @@ const labels = [
 function startAnimation() {
   const button = document.getElementById('startButton');
   button.classList.add('crack');
+  button.disabled = true;
 
   setTimeout(() => {
     document.getElementById('intro').classList.add('hidden');
@@ -47,23 +48,29 @@ function startAnimation() {
 
 function revealPoem() {
   const poem = document.getElementById('poem');
+  const container = document.getElementById('mainContainer');
+
   poem.classList.remove('hidden');
+  container.classList.add('show-scroll');
+
   poem.scrollIntoView({ behavior: "smooth" });
 }
 
 function restartExperience() {
   document.body.classList.add("cracked");
+
   setTimeout(() => {
-    // Reset state
     document.getElementById("intro").classList.remove("hidden");
     document.getElementById("roller").classList.add("hidden");
     document.getElementById("message").classList.add("hidden");
     document.getElementById("poem").classList.add("hidden");
+    document.getElementById("mainContainer").classList.remove("show-scroll");
 
     document.getElementById("results").innerHTML = "";
     document.getElementById("slot").textContent = "Loading...";
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("startButton").disabled = false;
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
     document.body.classList.remove("cracked");
   }, 1000);
 }
