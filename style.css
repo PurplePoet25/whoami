@@ -14,6 +14,22 @@ body {
   margin: 0 auto;
 }
 
+.container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container.show-scroll {
+  justify-content: flex-start;
+  min-height: auto;
+}
+
 /* Spacer before poem for mobile scroll fix */
 .poem {
   margin-top: 150px;
